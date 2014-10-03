@@ -87,3 +87,10 @@ package for keyboard shortcut).
 | Extract variable | ctrl+alt+x        | LocalVariable: Extract |
 | Detach variable  | ctrl+shift+x      | LocalVariable: Detach  |
 | Rename variable  | alt+shift+x       | LocalVariable: Rename  |
+
+
+### Dependencies
+
+- https://github.com/shagabutdinov/sublime-statement
+- https://github.com/shagabutdinov/sublime-expression
+- https://github.com/shagabutdinov/sublime-method
