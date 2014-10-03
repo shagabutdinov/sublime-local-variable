@@ -1,0 +1,9 @@
+[
+  {
+    "command": "set_named_mark",
+  },
+
+  {
+    "command": "extract_variable"
+  }
+]

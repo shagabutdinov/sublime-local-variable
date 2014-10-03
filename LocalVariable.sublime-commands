@@ -1,0 +1,22 @@
+[
+  {
+    "caption": "LocalVariable: Extract",
+    "command": "run_macro_file",
+    "args": {
+      "file": "res://Packages/LocalVariable/macro/extract_variable.sublime-macro"
+    },
+  },
+
+  {
+    "caption": "LocalVariable: Detach",
+    "command": "detach_variable",
+  },
+
+  {
+    "caption": "LocalVariable: Rename",
+    "command": "run_macro_file",
+    "args": {
+      "file": "res://Packages/LocalVariable/macro/rename_variable.sublime-macro"
+    },
+  },
+]

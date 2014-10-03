@@ -1,0 +1,22 @@
+[
+  {
+    "keys": ["ctrl+alt+x"],
+    "command": "run_macro_file",
+    "args": {
+      "file": "res://Packages/LocalVariable/macro/extract_variable.sublime-macro"
+    },
+  },
+
+  {
+    "keys": ["ctrl+shift+x"],
+    "command": "detach_variable",
+  },
+
+  {
+    "keys": ["alt+shift+x"],
+    "command": "run_macro_file",
+    "args": {
+      "file": "res://Packages/LocalVariable/macro/rename_variable.sublime-macro"
+    },
+  },
+]

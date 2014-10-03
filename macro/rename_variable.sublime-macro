@@ -1,0 +1,9 @@
+[
+  {
+    "command": "set_named_mark",
+  },
+
+  {
+    "command": "rename_variable"
+  }
+]
