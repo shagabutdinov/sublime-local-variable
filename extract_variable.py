@@ -1,11 +1,18 @@
 import sublime
 import sublime_plugin
-from Method import method
-from Expression import expression
-from Statement import statement
-import re
 
+import re
 from LocalVariable.local_variable import get_partial_statement, find_entries
+
+try:
+  from Method import method
+  from Expression import expression
+  from Statement import statement
+except ImportError:
+  sublime.error_message("Dependency import failed; please read readme for " +
+   "LocalVariable plugin for installation instructions; to disable this " +
+   "message remove this plugin")
+
 
 class ExtractVariable(sublime_plugin.TextCommand):
 

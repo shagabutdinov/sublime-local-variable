@@ -1,7 +1,14 @@
 import sublime
 import sublime_plugin
-from Expression import expression
+
 from LocalVariable.local_variable import find_entries
+
+try:
+  from Expression import expression
+except ImportError:
+  sublime.error_message("Dependency import failed; please read readme for " +
+   "LocalVariable plugin for installation instructions; to disable this " +
+   "message remove this plugin")
 
 class RenameVariable(sublime_plugin.TextCommand):
   def run(self, edit):
@@ -15,12 +22,12 @@ class RenameVariable(sublime_plugin.TextCommand):
       line_region = self.view.line(sel.b)
       line_start, line_end = line_region.begin(), line_region.end()
 
-      start = expression.find_match(self.view, sel.b, '[^\w$@]|^', {'backward': True, 
-        'range': [line_start, sel.b], 'string': True, 'nesting': True, 
+      start = expression.find_match(self.view, sel.b, '[^\w$@]|^', {'backward': True,
+        'range': [line_start, sel.b], 'string': True, 'nesting': True,
         'comment': True})
 
-      end = expression.find_match(self.view, sel.b, '[^\w?!]|$', 
-        {'range': [sel.b, line_end], 'string': True, 'nesting': True, 
+      end = expression.find_match(self.view, sel.b, '[^\w?!]|$',
+        {'range': [sel.b, line_end], 'string': True, 'nesting': True,
         'comment': True})
 
       if start == None or end == None or start == end:

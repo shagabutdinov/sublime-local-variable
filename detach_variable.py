@@ -1,9 +1,17 @@
 import sublime
 import sublime_plugin
-from Method import method
-from Statement import statement
-from LocalVariable import local_variable
+
 import re
+from LocalVariable import local_variable
+
+try:
+  from Method import method
+  from Statement import statement
+except ImportError:
+  sublime.error_message("Dependency import failed; please read readme for " +
+   "LocalVariable plugin for installation instructions; to disable this " +
+   "message remove this plugin")
+
 
 class DetachVariable(sublime_plugin.TextCommand):
   def run(self, edit):
@@ -92,7 +100,7 @@ class DetachVariable(sublime_plugin.TextCommand):
       highlights += self.view.get_regions('detach_variable_' + str(index))
       self.view.erase_regions('detach_variable_' + str(index))
 
-    self.view.add_regions('detach_variable', highlights, 'string', '', 
+    self.view.add_regions('detach_variable', highlights, 'string', '',
       sublime.DRAW_EMPTY | sublime.DRAW_OUTLINED)
 
   def _is_variable_modified(self, assignments):

@@ -5,11 +5,17 @@
     "args": {
       "file": "res://Packages/LocalVariable/macro/extract_variable.sublime-macro"
     },
+    "context": [
+      {"key": "setting.sublime_enhanced_keybindings", "operator": "equal", "operand": true},
+    ]
   },
 
   {
     "keys": ["ctrl+shift+x"],
     "command": "detach_variable",
+    "context": [
+      {"key": "setting.sublime_enhanced_keybindings", "operator": "equal", "operand": true},
+    ]
   },
 
   {
@@ -18,5 +24,8 @@
     "args": {
       "file": "res://Packages/LocalVariable/macro/rename_variable.sublime-macro"
     },
+    "context": [
+      {"key": "setting.sublime_enhanced_keybindings", "operator": "equal", "operand": true},
+    ]
   },
 ]

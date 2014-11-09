@@ -6,7 +6,7 @@ and API for other plugins to work with variables.
 
 ### Demo
 
-![Demo](https://raw.github.com/shagabutdinov/sublime-local-variable/master/demo/demo.gif "Demo")
+![Demo](https://github.com/shagabutdinov/sublime-enhanced-demos/raw/master/local_variable.gif "Demo")
 
 
 ### Installation
@@ -91,6 +91,6 @@ package for keyboard shortcut).
 
 ### Dependencies
 
-- https://github.com/shagabutdinov/sublime-statement
-- https://github.com/shagabutdinov/sublime-expression
-- https://github.com/shagabutdinov/sublime-method
+* [Statement](https://github.com/shagabutdinov/sublime-statement)
+* [Expression](https://github.com/shagabutdinov/sublime-expression)
+* [Method](https://github.com/shagabutdinov/sublime-method)

@@ -1,10 +1,16 @@
 import sublime
 import sublime_plugin
 
-from Expression import expression
-from Statement import statement
-from Method import method as method_parser
 import re
+
+try:
+  from Expression import expression
+  from Statement import statement
+  from Method import method as method_parser
+except ImportError:
+  sublime.error_message("Dependency import failed; please read readme for " +
+   "LocalVariable plugin for installation instructions; to disable this " +
+   "message remove this plugin")
 
 VARIABLE = r'[$@]?\w+[?!]?(?!\s*\()'
 
@@ -50,7 +56,7 @@ def get_partial_statement(view, point):
       return token
 
     tokens_range = [tokens[0][0], tokens[len(tokens) - 1][1]]
-    assignment_match = expression.find_match(view, tokens_range[0], 
+    assignment_match = expression.find_match(view, tokens_range[0],
       r'=[^=]\s*', {'range': tokens_range})
     if assignment_match != None:
       tokens_range[0] += assignment_match.end(0)
@@ -91,7 +97,7 @@ def prepare_argument(view, argument, point):
   if argument == None:
     return None
 
-  hash_match = expression.find_match(view, argument[0], 
+  hash_match = expression.find_match(view, argument[0],
     r'((\S|^)(?<!:):(?!:)|=>|=)\s*', {'range': argument})
 
   if hash_match == None:
@@ -188,9 +194,9 @@ def _get_header_assignments(view, point):
       continue
 
     result.append({
-      'variable': token, 
-      'value': None, 
-      'dirty': False, 
+      'variable': token,
+      'value': None,
+      'dirty': False,
     })
 
   return result
@@ -267,7 +273,7 @@ def _get_assignment_info_recurive(view, type, left_tokens, right_tokens):
       if is_tokens_not_parsable:
         continue
 
-      result += _get_assignment_info_recurive(view, type, left_sub_tokens, 
+      result += _get_assignment_info_recurive(view, type, left_sub_tokens,
         right_sub_tokens)
 
       continue
@@ -295,10 +301,10 @@ def _get_assignments(view, type, left, right):
     variable_value = view.substr(sublime.Region(*variable))
     variable_length = re.search(r'[$@]?\w+(!|\?)?', variable_value).end(0)
     result.append({
-      'variable': [variable[0], variable[0] + variable_length], 
-      'value': right, 
-      'type': type, 
-      'dirty': is_dirty, 
+      'variable': [variable[0], variable[0] + variable_length],
+      'value': right,
+      'type': type,
+      'dirty': is_dirty,
     })
 
   return result
