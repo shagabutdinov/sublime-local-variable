@@ -219,7 +219,6 @@ def get_assignment_info(view, entry, cache = []):
     return None
 
   delimeter_index, delimeter = None, None
-  print(tokens)
   for index, current in enumerate(tokens[:-1]):
     next = tokens[index + 1]
     delimeter_value = view.substr(sublime.Region(current[1], next[0]))
