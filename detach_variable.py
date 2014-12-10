@@ -39,6 +39,7 @@ class DetachVariable(sublime_plugin.TextCommand):
     variable_range, _ = variable
     scope = local_variable.get_scope(self.view, variable_range[0])
     assignments = local_variable.find_assignments(self.view, variable_range)
+
     if len(assignments) == 0 or self._is_variable_modified(assignments):
       return
 
@@ -105,7 +106,15 @@ class DetachVariable(sublime_plugin.TextCommand):
 
   def _is_variable_modified(self, assignments):
     for assignment in assignments:
-      if assignment['type'] != '=' or assignment['dirty']:
+      is_variable_modified = (
+        (
+          assignment['type'] != ':=' and
+          assignment['type'] != '='
+        ) or
+        assignment['dirty']
+      )
+
+      if is_variable_modified:
         return True
 
     return False

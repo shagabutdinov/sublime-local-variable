@@ -122,14 +122,26 @@ class ExtractVariable(sublime_plugin.TextCommand):
 
     line_region = self.view.line(self.view.text_point(line, 0))
     point = line_region.begin() - 1
-    definition = indentation + ' = ' + value + "\n"
+
+    offset = 0
+    if 'source.go' in self.view.scope_name(point):
+      definition = indentation + ' := ' + value + "\n"
+    elif 'source.js' in self.view.scope_name(point):
+      definition = indentation + 'var  = ' + value + ";\n"
+      offset = 4
+    elif 'source.php' in self.view.scope_name(point):
+      definition = indentation + '$ = ' + value + ";\n"
+      offset = 1
+    else:
+      definition = indentation + ' = ' + value + "\n"
+
     if line != 0:
       definition = "\n" + definition
 
     self.view.replace(edit, sublime.Region(point, point + 1), definition)
     point += len(indentation) + 1
     self.view.add_regions('local_variable_placeholder_last',
-      [sublime.Region(point, point)])
+      [sublime.Region(point + offset, point  +  offset)])
 
     self.view.sel().clear()
     regions = []
