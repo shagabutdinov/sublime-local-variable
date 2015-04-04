@@ -324,5 +324,5 @@ def get_root_scope(view, point, header = True):
   return [method['body_start'], method['body_end']]
 
 def _get_variable_expression(name):
-  result = r'(?:^|[^\w\.])(' + name + r')(?!\s*\()(?=\W|$)'
+  result = r'(?:^|[^\w\.])(?:var\s*)?(' + name + r')(?!\s*\()(?=\W|$)'
   return result
