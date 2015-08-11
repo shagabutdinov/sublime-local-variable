@@ -176,11 +176,9 @@ def find_assignments(view, variable, scope = None):
   return result
 
 def _get_header_assignments(view, point):
-  method_info = method_parser.extract_method(view, point)
-  if method_info == None:
-    return
-
-  _, method = method_info
+  method = method_parser.extract_method(view, point)
+  if method == None:
+    return None
 
   method_region = sublime.Region(method['start'], method['end'])
   parenthethis = re.search(r'^[^\n]*\(', view.substr(method_region))
@@ -317,7 +315,6 @@ def get_root_scope(view, point, header = True):
   if method == None:
     return [0, view.size()]
 
-  _, method = method
   if header:
     return [method['start'], method['end']]
 

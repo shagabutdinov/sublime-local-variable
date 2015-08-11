@@ -130,8 +130,7 @@ class ExtractVariable(sublime_plugin.TextCommand):
       definition = indentation + 'var  = ' + value + ";\n"
       offset = 4
     elif 'source.php' in self.view.scope_name(point):
-      definition = indentation + '$ = ' + value + ";\n"
-      offset = 1
+      definition = indentation + ' = ' + value + ";\n"
     else:
       definition = indentation + ' = ' + value + "\n"
 
