@@ -5,10 +5,11 @@ from LocalVariable.local_variable import find_entries
 
 try:
   from Expression import expression
-except ImportError:
+except ImportError as error:
   sublime.error_message("Dependency import failed; please read readme for " +
    "LocalVariable plugin for installation instructions; to disable this " +
-   "message remove this plugin")
+   "message remove this plugin; message: " + str(error))
+  raise error
 
 class RenameVariable(sublime_plugin.TextCommand):
   def run(self, edit):

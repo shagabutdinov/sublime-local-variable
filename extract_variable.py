@@ -8,11 +8,11 @@ try:
   from Method import method
   from Expression import expression
   from Statement import statement
-except ImportError:
+except ImportError as error:
   sublime.error_message("Dependency import failed; please read readme for " +
    "LocalVariable plugin for installation instructions; to disable this " +
-   "message remove this plugin")
-
+   "message remove this plugin; message: " + str(error))
+  raise error
 
 class ExtractVariable(sublime_plugin.TextCommand):
 
